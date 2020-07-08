@@ -8,4 +8,4 @@ app.use(cors());
 
 
 app.listen(process.env.port, () =>
- console.log(`Server started at port : ${process.env.port}`));
+ console.log(`Server is started at port : ${process.env.port}`));
