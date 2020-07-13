@@ -1,11 +1,21 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const cors = require('cors');
+const mongoose = require('mongoose');
+require('./models/db');
+require('dotenv').config();
 
-var app = express();
-app.use(bodyParser.json());
-app.use(cors());  
+const app = express();
 
+app.use(cors());
+app.use(express.json());
 
-app.listen(process.env.port, () =>
- console.log(`Server  started at port : ${process.env.port}`));
+const admin =require('./routes/admin');
+
+app.use('/admin',admin);
+
+app.get('/',(req,res)=>{
+    res.send('hi')
+})
+app.listen(3000, () => {
+    console.log(`Server is running on port: 3000`);
+});

@@ -1,26 +1,24 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+
+import Navbar from "./components/navbar.component";
+import adminList from "./components/adminList.component";
+import createAdmin from "./components/createAdmin.component";
+import editAdmin from "./components/editAdmin.components";
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+        <div className ="container">
+      <Navbar />
+      <Route path='' exact component={adminList} />
+      <Route path='/create' exact component={createAdmin}/>
+      <Route path='/edit/:id' exact component={editAdmin}/>     
+    </div>   
+    </Router>
+    
   );
 }
-
 export default App;
