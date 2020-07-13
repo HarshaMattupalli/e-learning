@@ -57,9 +57,9 @@ export default class editAdmin extends Component {
         }
         
         console.log("data is",admin);
-        axios.put('http://localhost:3000/admin'+this.props.match.params.id,admin)
+        axios.put('http://localhost:3000/admin/'+this.props.match.params.id,admin)
         .then(res => console.log(res.data));
-        window.location = '/';
+        //window.location = '/';
     }
 
     render() {
@@ -87,7 +87,7 @@ export default class editAdmin extends Component {
                     </div>
 
                     <div className="form-group">
-                        <input type="submit" value="Edit Admin" className="btn btn-primary" />
+                        <input type="submit" value="Update Admin" className="btn btn-primary" />
                     </div>
                 </form>
             </div>

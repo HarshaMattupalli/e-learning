@@ -11,3 +11,64 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.leads{
+  position: absolute;
+  width: 320px;
+  height: 1080px;
+  left: 0px;
+  top: 0px;
+  
+  background: #FFFFFF;
+}
+.accountListSearch{
+  position: absolute;
+  width: 600px;
+  height: 56px;
+  left: 400px;
+  top: 40px;
+  
+  background: #FFFFFF;
+  border-radius: 12px;
+}
+.accountListHeading{
+  position: absolute;
+  width: 88px;
+  height: 22px;
+  left: 370px;
+  top: 116px;
+  
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 22px;
+  /* identical to box height */
+
+  color: #E24F14;
+}
+.accountListSubHeading{
+  position: absolute;
+width: 89px;
+height: 16px;
+left: 370px;
+top: 148px;
+
+font-family: Open Sans;
+font-style: normal;
+font-weight: normal;
+font-size: 12px;
+line-height: 16px;
+
+color: #4A4A4A;
+}
+.accountListTable{
+  position: absolute;
+  width: 1540px;
+  height: 858px;
+  left: 360px;
+  top: 194px;
+  
+  background: #FFFFFF;
+  border-radius: 12px;
+}
