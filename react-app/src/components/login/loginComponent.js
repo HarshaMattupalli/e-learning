@@ -1,15 +1,24 @@
 import React, { componenet, Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
+
+
 import axios from 'axios';
 
 
 export default class login extends Component {
     constructor(props) {
         super(props);
+        const token = localStorage.getItem("token");
+        let loggedIn = true
+        if (token == null) {
+            loggedIn = false
+        }
+
         this.state = {
             email: '',
             password: '',
-            token:''
+            token: '',
+            loggedIn: ''
         }
         this.onChangeEmail = this.onChangeEmail.bind(this);
         this.onChangePassword = this.onChangePassword.bind(this);
@@ -20,7 +29,7 @@ export default class login extends Component {
         this.setState({
             email: e.target.value
         })
-        
+
     }
     onChangePassword(e) {
         this.setState({
@@ -28,28 +37,36 @@ export default class login extends Component {
         })
     }
     onSubmit(e) {
-       e.preventDefault();
-       const loginData = {
-        email: this.state.email,
-        password: this.state.password
-    }
+        e.preventDefault();
+        const loginData = {
+            email: this.state.email,
+            password: this.state.password
+        }
 
-        axios.post(`${process.env.REACT_APP_API_BASE_URL}/login`,loginData)
-            .then(res =>{
+        axios.post(`${process.env.REACT_APP_API_BASE_URL}/login`, loginData)
+            .then(res => {
                 this.setState({
-                    token: res.data 
+                    token: res.data
                 })
-                if(res.data){
-                    console.log('token:',res.data);
-                    
+                console.log('token:', res.data);
+                if (res.data) {
+                    this.setState({
+                        loggedIn: true
+                    })
+                    localStorage.setItem("token", res.data.token);
+                    console.log('token:', res.data);
                 }
+
             })
-            
+
         //window.location = '/';
         return <Link to="/accounts"></Link>
     }
 
     render() {
+        if (this.state.loggedIn) {
+            return <Redirect to="/accounts" />
+        }
         return (
             <div className="container">
                 <form onSubmit={this.onSubmit}>
@@ -69,7 +86,7 @@ export default class login extends Component {
                     </div>
 
                     <div className="form-group">
-                        <input type="submit" value="Login" className="btn btn-primary"/>
+                        <input type="submit" value="Login" className="btn btn-primary" />
                     </div>
                     <Link to='/forgetPassword'>Forgot password?</Link>
                 </form>

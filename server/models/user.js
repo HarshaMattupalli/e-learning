@@ -62,11 +62,12 @@ userSchema.pre('save', function (next) {
         })
     })
 
-});
+}); 
 
 //methods
 userSchema.methods.verifyPassword = function (password) {
-    return bcryptjs.compareSync(password, this.password);
+    console.log(`inside verify pwd ${password}, ${this.password}`);
+    return bcryptjs.compareSync(password,this.password);
 }
 
 

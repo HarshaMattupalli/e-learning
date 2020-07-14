@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Navbar from './navbar.component';
+import { Redirect, Link} from 'react-router-dom';
 require('dotenv').config();
 
 const Accounts = props=>(
@@ -18,8 +19,15 @@ const Accounts = props=>(
 
 export default class accountList extends Component {
 constructor(props){
+
     super(props);
+    const token = localStorage.getItem("token");
+    let loggedIn = true
+    if(token == null){
+        loggedIn =false
+    }
     this.state = {
+        loggedIn,
         accountsData: []
     }
    
@@ -45,6 +53,9 @@ accountist(){
 
 }
     render() {
+        if(this.state.loggedIn == false){
+            return <Redirect to='/'/>
+        }
         return (
             <div>
                 <Navbar/>
