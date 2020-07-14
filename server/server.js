@@ -18,10 +18,12 @@ const login = require('./routes/login');
 const accounts = require('./routes/accounts');
 const register = require('./routes/user');
 const getUserData = require('./routes/route');
+const forgetpassword = require('./routes/forgetPasswordMail');
 app.use('/admin', admin);
 app.use('/login', login);
 app.use('/accounts', accounts);
 app.use('/register', register);
+app.use('/forgetpassword',forgetpassword);
 
 app.use('/getuserdata',getUserData);
 

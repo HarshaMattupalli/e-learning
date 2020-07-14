@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Navbar from './navbar.component';
+require('dotenv').config();
 
 const Accounts = props=>(
     <tr>
@@ -23,7 +25,8 @@ constructor(props){
    
 }
 componentDidMount(){
-    axios.get('http://localhost:3000/accounts')
+    
+    axios.get(`${process.env.REACT_APP_API_BASE_URL}/accounts`)
             .then(res => {
                 this.setState({
                     accountsData: res.data 
@@ -44,6 +47,7 @@ accountist(){
     render() {
         return (
             <div>
+                <Navbar/>
                 <input type="text" placeholder="search" className="accountListSearch"></input>
                 <div>
                     <h5 className="accountListHeading">Accounts</h5>
