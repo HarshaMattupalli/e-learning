@@ -35,8 +35,13 @@ router.get('/', (req, res) => {
     generateTextFromHTML: true,
     html: "<b>changed</b>"
   };
-  smtpTransport.sendMail(mailOptions, (error, response) => {
-    error ? console.log(error) : console.log(response);
+  smtpTransport.sendMail(mailOptions, (err, response) => {
+    if(!err){
+      res.send('mail sent');
+    }
+    else{
+      res.send(err);
+    }
     smtpTransport.close();
   });
 })
