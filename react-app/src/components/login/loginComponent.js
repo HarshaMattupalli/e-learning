@@ -1,7 +1,5 @@
 import React, { componenet, Component } from 'react';
 import { Redirect, Link } from 'react-router-dom';
-
-
 import axios from 'axios';
 
 
@@ -13,7 +11,6 @@ export default class login extends Component {
         if (token == null) {
             loggedIn = false
         }
-
         this.state = {
             email: '',
             password: '',
@@ -70,6 +67,9 @@ export default class login extends Component {
         return (
             <div className="container">
                 <form onSubmit={this.onSubmit}>
+                    <div className="form-group">
+                        <label>Login </label>
+                    </div>
                     <div className="form-group">
                         <label>Email: </label>
                         <input type="text" required className="form-control"

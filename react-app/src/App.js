@@ -17,6 +17,10 @@ import settings from "./components/superAdmin/settings.component";
 import login from './components/login/loginComponent';
 import forgetPassword from './components/login/forgetComponent';
 import logout from './components/login/logoutComponent';
+import forgetPasswordAuthenticate from './components/login/forgePasswordAuthenticate';
+
+
+import admin from './components/Admin/basicDetails'
 
 
 function App() {
@@ -39,6 +43,8 @@ function App() {
       <Route path='/' exact component={login}></Route>
       <Route path='/forgetPassword' exact component={forgetPassword}></Route>
       <Route path='/logout' exact component={logout}></Route>
+      <Route path='/forgetPasswordAuthenticate' exact component={forgetPasswordAuthenticate}></Route>
+      <Route path='/admin' exact component={admin}></Route>
     </div>   
     </Router>
     

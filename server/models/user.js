@@ -3,11 +3,8 @@ const bcryptjs = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 var userSchema = new mongoose.Schema({
-    first_name: {
-        type: String,
-        required: 'Name can\'t be Empty'
-    },
-    last_name: {
+    
+    name: {
         type: String,
         required: 'Name can\'t be Empty'
     },
@@ -23,7 +20,13 @@ var userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: 'Password can\'t be Empty',
-
+    },
+    account_code:{
+          type:String,
+          required:true
+    },
+    otp: {
+        type: String,
     },
     is_active: {
         type: Number,
@@ -47,10 +50,10 @@ userSchema.path('email').validate((val) => {
 }, 'Invalid e-mail.');
 
 //validation for password
-userSchema.path('password').validate((val) => {
-    passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{6,})/;
-    return passwordRegex.test(val);
-}, 'password has atleast 6 characters and in that one lowercase,one uppercase,one specialcharacter');
+// userSchema.path('password').validate((val) => {
+//     passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{6,})/;
+//     return passwordRegex.test(val);
+// }, 'password has atleast 6 characters and in that one lowercase,one uppercase,one specialcharacter');
 
 //pre event for  salt secret 
 userSchema.pre('save', function (next) {
@@ -61,11 +64,12 @@ userSchema.pre('save', function (next) {
             next();
         })
     })
-
 }); 
 
 //methods
 userSchema.methods.verifyPassword = function (password) {
+    //console.log(password,this.password);
+    //console.log(bcryptjs.compareSync(password,this.password));
     return bcryptjs.compareSync(password,this.password);
 }
 

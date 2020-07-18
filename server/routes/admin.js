@@ -4,7 +4,6 @@ let admin = require('../models/admin');
 var objectId = require('mongoose').Types.ObjectId;
 
 router.get('/', (req, res) => {
-
     admin.find({ is_active: 1 }, (err, data) => {
         if (!err) {
             res.send(data);

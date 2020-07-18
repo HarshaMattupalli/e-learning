@@ -8,11 +8,12 @@ var objectId = require('mongoose').Types.ObjectId;
 
 router.post('/', (req, res,next) => {
     var user = new User({
-        first_name: req.body.first_name,
-        last_name: req.body.last_name,
+        
+        name: req.body.name,
         mobile_number: Number(req.body.mobile_number),
         user_type: req.body.user_type,
         email: req.body.email,
+        account_code:req.body.account_code,
         password: req.body.password,
         is_active: 1,
         created_by: req.body.created_by,

@@ -18,16 +18,20 @@ const login = require('./routes/login');
 const accounts = require('./routes/accounts');
 const register = require('./routes/user');
 const getUserData = require('./routes/route');
-const sendMail = require('./routes/mailSend');
+
 const forgetPassword = require('./routes/forgetPassword');
+const forgetPasswordValidation =require('./routes/forgetPasswordValidate');
+const sendInvite = require('./routes/sendInvite');
 
 app.use('/admin', admin);
 app.use('/login', login);
 app.use('/accounts', accounts);
 app.use('/register', register);
-app.use('/sendMail',sendMail);
+
 app.use('/getuserdata',getUserData);
 app.use('/forgetPassword',forgetPassword);
+app.use('/forgetPasswordValidation',forgetPasswordValidation);
+app.use('/sendInvite',sendInvite);
 
 app.get('/', (req, res) => {
     res.send('Server is working !!!!')

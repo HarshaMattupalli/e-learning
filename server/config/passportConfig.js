@@ -12,7 +12,7 @@ passport.use(
                     return done(err);
                 else if (!user)
                     return done(null, false, { message: 'email is not registered' })
-                else if (user.verifyPassword(password))
+                else if (!user.verifyPassword(password))
                     return done(null, false, { message: 'wrong password' })
                 else
                     return done(null, user);

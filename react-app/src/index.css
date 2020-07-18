@@ -72,3 +72,38 @@ color: #4A4A4A;
   background: #FFFFFF;
   border-radius: 12px;
 }
+
+.adminDashboard{
+
+  position: absolute;
+  width: 88px;
+  height: 22px;
+  left: 40px;
+  top: 120px;
+  
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 22px;
+  /* identical to box height */
+  color: #000000;
+}
+.basicDetails{
+  position: absolute;
+width: 102px;
+height: 22px;
+left: 64px;
+top: 224px;
+
+font-family: Open Sans;
+font-style: normal;
+font-weight: bold;
+font-size: 16px;
+line-height: 22px;
+/* identical to box height */
+
+
+color: #367EA1;
+}
+

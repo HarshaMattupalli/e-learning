@@ -47,6 +47,7 @@ export default class AdminList extends Component {
         })
     }
     render() {
+        let admins = this.state.adminsData;
         return (
             <div>
                 <h3>Admins List</h3>
@@ -60,7 +61,9 @@ export default class AdminList extends Component {
 
                     </thead>
                     <tbody>
-                        {this.adminList()}
+                        {admins.map((currentAdmin) => {
+            return <Admin admin={currentAdmin} key={currentAdmin._id} />
+                        })}
                     </tbody>
                 </table>
             </div>
